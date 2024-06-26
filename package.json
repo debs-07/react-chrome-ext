@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postbuild": " copy utils\\contentScript.js build\\contentScript.js && copy utils\\backgroundScript.js build\\backgroundScript.js"
   },
   "eslintConfig": {
     "extends": [
