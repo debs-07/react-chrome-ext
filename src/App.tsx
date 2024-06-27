@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { initializeDataFromChromestore } from "./store/slices/moviesSlice";
 import { Box } from "@mui/material";
-import ListingPage from "./ListingPage";
-import DetailsPage from "./DetailsPage";
+import ListingPage from "./components/ListingPage";
+import DetailsPage from "./components/DetailsPage";
 import { RowType } from "./types";
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
     setDetailsPageConfig({ open: false, rowDetails: undefined });
 
   return (
-    <Box sx={{ width: "500px", height: "500px" }}>
+    <Box sx={{ width: "500px", height: "300px" }}>
       {detailsPageConfig.open ? (
         <DetailsPage
           movieDetails={detailsPageConfig.rowDetails}

@@ -16,10 +16,6 @@ export type SearchResultListType = {
   history: SearchResult[];
 };
 
-export type ListingPageProps = {
-  rowClickhandler: (row: RowType) => void;
-};
-
 export type RowType = {
   id: number;
   title: string;
@@ -30,7 +26,7 @@ export type RowType = {
   searchTime: string;
 };
 
-export type DetailsPageProps = {
-  movieDetails: RowType | undefined;
-  backClickHandler: () => void;
+export type QuerySearchType = {
+  enabled: boolean;
+  value: string;
 };

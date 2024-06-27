@@ -15,7 +15,7 @@ try {
           title: movie.title,
           releaseDate: movie.release_date,
           overview: movie.overview,
-          rating: movie.vote_average,
+          rating: movie.vote_average.toFixed(1),
         }));
 
         const movieData = {
