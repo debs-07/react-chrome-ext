@@ -26,6 +26,7 @@ This Chrome extension enhances the Google search experience for movie queries by
 - Follow this document to create the key - https://developer.themoviedb.org/docs/getting-started
 - Paste the key in utils/backgroundScript.js
    ### ``https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key={ADD_TMDB_KEY_HERE}``
+- Verify if the above URL is working by directly accessing it in Chrome. Note that it may not work with some internet service providers.
 
 ## Installation And Starting up
 
