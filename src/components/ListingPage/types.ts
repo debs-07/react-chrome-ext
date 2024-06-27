@@ -2,6 +2,11 @@ import { QuerySearchType, RowType } from "../../types";
 
 export type ListingPagePropsTypes = {
   rowClickhandler: (row: RowType) => void;
+  toggleExpand: () => void;
+};
+
+export type HeaderPropsTypes = {
+  toggleExpand: () => void;
 };
 
 export type THeadPropsTypes = {

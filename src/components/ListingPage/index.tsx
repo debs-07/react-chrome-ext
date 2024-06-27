@@ -6,7 +6,10 @@ import TBody from "./TBody";
 import { useDispatch } from "react-redux";
 import { updateQuery, updateToggle } from "../../store/slices/searchSlice";
 
-const ListingPage = ({ rowClickhandler }: ListingPagePropsTypes) => {
+const ListingPage = ({
+  rowClickhandler,
+  toggleExpand,
+}: ListingPagePropsTypes) => {
   const dispatch = useDispatch();
 
   // Handler to toggle search in query column
@@ -18,7 +21,7 @@ const ListingPage = ({ rowClickhandler }: ListingPagePropsTypes) => {
 
   return (
     <>
-      <Header />
+      <Header toggleExpand={toggleExpand} />
       <TableContainer
         component={Paper}
         style={{ maxHeight: "300px", whiteSpace: "nowrap" }}

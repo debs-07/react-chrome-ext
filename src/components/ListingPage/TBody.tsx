@@ -11,7 +11,7 @@ const TBody = ({ rowClickhandler }: TBodyTypePropsTypes) => {
   const querySearch = useSelector((state: any) => state.search.querySearch);
 
   // Processing data to list format
-  const processDataForListing = useMemo(() => {
+  const processDataForListing: RowType[] = useMemo(() => {
     return movieHistory?.flatMap((data: SearchResult) => {
       const shouldInclude =
         !querySearch.value ||
@@ -32,31 +32,41 @@ const TBody = ({ rowClickhandler }: TBodyTypePropsTypes) => {
   }, [movieHistory, querySearch.value]);
 
   return (
-    <TableBody>
-      {processDataForListing.map((row: RowType) => (
-        <TableRow
-          key={row.id}
-          sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-          onClick={() => rowClickhandler(row)}
-        >
-          <TableCell align="center">
-            <CellRenderer value={row.query} />{" "}
-          </TableCell>
-          <TableCell align="center">
-            <CellRenderer value={row.title} />
-          </TableCell>
-          <TableCell align="center">
-            <CellRenderer value={row.releaseDate} />
-          </TableCell>
-          <TableCell align="center">
-            <CellRenderer value={row.rating} />
-          </TableCell>
-          <TableCell align="center">
-            <CellRenderer value={row.searchTime} />
+    <>
+      {processDataForListing.length === 0 ? (
+        <TableRow>
+          <TableCell colSpan={5} align="center">
+            No Data Found
           </TableCell>
         </TableRow>
-      ))}
-    </TableBody>
+      ) : (
+        <TableBody>
+          {processDataForListing.map((row: RowType) => (
+            <TableRow
+              key={row.id}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              onClick={() => rowClickhandler(row)}
+            >
+              <TableCell align="center">
+                <CellRenderer value={row.query} />{" "}
+              </TableCell>
+              <TableCell align="center">
+                <CellRenderer value={row.title} />
+              </TableCell>
+              <TableCell align="center">
+                <CellRenderer value={row.releaseDate} />
+              </TableCell>
+              <TableCell align="center">
+                <CellRenderer value={row.rating} />
+              </TableCell>
+              <TableCell align="center">
+                <CellRenderer value={row.searchTime} />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      )}
+    </>
   );
 };
 

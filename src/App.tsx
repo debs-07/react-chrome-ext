@@ -17,6 +17,11 @@ function App() {
     rowDetails: undefined,
   });
 
+  const [expand, setExpand] = useState<boolean>(false);
+
+  // Handler to toggle expand the modal
+  const toggleExpand = () => setExpand((prev) => !prev);
+
   useEffect(() => {
     // On initial render get data from chrome storage and put it in redux store
     updateDataIntoStore();
@@ -41,14 +46,17 @@ function App() {
     setDetailsPageConfig({ open: false, rowDetails: undefined });
 
   return (
-    <Box sx={{ width: "500px", height: "300px" }}>
+    <Box sx={{ width: expand ? "800px" : "500px", height: "300px" }}>
       {detailsPageConfig.open ? (
         <DetailsPage
           movieDetails={detailsPageConfig.rowDetails}
           backClickHandler={backToListingHandler}
         />
       ) : (
-        <ListingPage rowClickhandler={intoDetailsHandler} />
+        <ListingPage
+          rowClickhandler={intoDetailsHandler}
+          toggleExpand={toggleExpand}
+        />
       )}
       ;
     </Box>
