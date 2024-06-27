@@ -8,7 +8,12 @@ try {
     fetch(
       `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key={ADD_TMDB_KEY_HERE}`
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Api Failed");
+        }
+        return response.json();
+      })
       .then((data) => {
         const processedResults = data?.results?.map((movie) => ({
           id: movie.id,
