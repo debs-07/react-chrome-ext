@@ -14,16 +14,16 @@ const TBody = ({ rowClickhandler }: TBodyTypePropsTypes) => {
   const processDataForListing: RowType[] = useMemo(() => {
     return movieHistory?.flatMap((data: SearchResult) => {
       const shouldInclude =
-        !querySearch.value ||
-        data.query
+        !querySearch?.value ||
+        data?.query
           .toLocaleLowerCase()
-          .includes(querySearch.value.toLocaleLowerCase());
+          .includes(querySearch?.value?.toLocaleLowerCase());
 
       if (shouldInclude) {
-        return data.movies.map((movie: MovieType) => ({
+        return data?.movies?.map((movie: MovieType) => ({
           ...movie,
-          query: data.query,
-          searchTime: moment(data.searchTime).format("MM/DD/YYYY HH:mm"),
+          query: data?.query,
+          searchTime: moment(data?.searchTime).format("MM/DD/YYYY HH:mm"),
         }));
       } else {
         return [];
@@ -43,24 +43,24 @@ const TBody = ({ rowClickhandler }: TBodyTypePropsTypes) => {
         <TableBody>
           {processDataForListing.map((row: RowType) => (
             <TableRow
-              key={row.id}
+              key={row?.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               onClick={() => rowClickhandler(row)}
             >
               <TableCell align="center">
-                <CellRenderer value={row.query} />{" "}
+                <CellRenderer value={row?.query} />{" "}
               </TableCell>
               <TableCell align="center">
-                <CellRenderer value={row.title} />
+                <CellRenderer value={row?.title} />
               </TableCell>
               <TableCell align="center">
-                <CellRenderer value={row.releaseDate} />
+                <CellRenderer value={row?.releaseDate} />
               </TableCell>
               <TableCell align="center">
-                <CellRenderer value={row.rating} />
+                <CellRenderer value={row?.rating} />
               </TableCell>
               <TableCell align="center">
-                <CellRenderer value={row.searchTime} />
+                <CellRenderer value={row?.searchTime} />
               </TableCell>
             </TableRow>
           ))}
